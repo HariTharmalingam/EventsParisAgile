@@ -3,11 +3,18 @@ import { Image, Container, Button } from 'react-bootstrap';
 import ReactHtmlParser from 'react-html-parser'
 import 'moment/locale/fr'
 import moment from 'moment'
+import { ArrowLeft } from 'react-bootstrap-icons'
 
 class Event extends Component {
+  constructor(props) {
+    super(props)
+    this.descriptionRef = React.createRef();
+  }
 
     componentDidMount(){
       moment.locale('fr')
+      if (this.descriptionRef)
+       this.descriptionRef.current.querySelectorAll('p, span').forEach(element => element.style.fontSize = "14px");
     }
 
     render(){
@@ -15,8 +22,8 @@ class Event extends Component {
      
       return(
         <div id="seeEvent" className="currentEventScroll">
-                <div className="mb-3">
-                  <Button onClick={() => setCurrentEvent()} variant="secondary" block>Retour</Button>
+                <div className=" mt-1 mb-3">
+                  <Button onClick={() => setCurrentEvent()} variant="dark" className="m-3" style={{position: "fixed"}}><ArrowLeft  size={16}/>  Retour</Button>
                 </div>
               <div className="text-center">
               <Image alt={data.fields.cover_alt} fluid src={data.fields.cover_url} />
@@ -26,26 +33,25 @@ class Event extends Component {
               <Container>
                 <div className="mt-2 text-center">
                   <h1 className="h2 font-weight-bold">{data.fields.title}</h1>
+                  <p style={{color: "black"}}>Catégorie : {data.fields.category}</p>
                 </div>
 
-                <div className="mt-3 text-secondary">
-                  <p className="mb-0">Début : {moment(data.fields.date_start).format("LLLL")}</p>
-                  <p className="mb-0">Fin : {moment(data.fields.date_end).format("LLLL")}</p>
+                <div className="mt-3 text-dark">
+                  <p style={{color: "black"}} className="mb-0">Début : {moment(data.fields.date_start).format("LLLL")}</p>
+                  <p style={{color: "black"}} className="mb-0">Fin : {moment(data.fields.date_end).format("LLLL")}</p>
                   <br/>
-                  <p>{data.fields.address_name}, {data.fields.address_street} {data.fields.address_city} {data.fields.address_zipcode}</p>
-                  <p>Catégorie : {data.fields.category}</p>
+                  <p style={{color: "black"}}>{data.fields.address_name}, {data.fields.address_street} {data.fields.address_city} {data.fields.address_zipcode}</p>
                 </div>
-                <div>
-                  <p className="text-secondary">
+                <div className="mb-5">
+                  <p style={{color: "black"}}>
                     {data.fields.lead_text}
                   </p>
                 </div>
                 <div>
                   <h2 className="h4">Description</h2>
                 </div>
-                <div className="text-secondary">
-                  {ReactHtmlParser(data.fields.description)}
-                  {ReactHtmlParser(data.fields.date_description)}                
+                <div ref={this.descriptionRef} style={{color : "black"}}>
+                  {ReactHtmlParser(data.fields.description)}             
                 </div>
                 
 

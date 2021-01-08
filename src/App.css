@@ -12,4 +12,8 @@
     .cardDetailsMargin {
         margin-bottom: 0.5rem;
     }
+
+    div.react-datepicker-popper {
+        z-index: 50;
+    }
 }

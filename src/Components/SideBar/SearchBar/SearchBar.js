@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { InputGroup, FormControl, Button } from 'react-bootstrap';
 import { searchByName, initialSearch, setTextSearch } from "./../../../Actions/SearchEngine";
 import moment from 'moment'
+import { Search } from 'react-bootstrap-icons'
+
 class SearchBar extends React.Component {
 
   constructor(props){
@@ -48,7 +50,7 @@ class SearchBar extends React.Component {
                 onInput={e => this.setKeywords(e)}
                 />
                 <InputGroup.Append>
-                    <Button variant="outline-secondary" onClick={e => searchByName(searchQuery)}>Search</Button>
+                    <Button variant="outline-secondary" onClick={e => searchByName(searchQuery)}><Search size={20} /></Button>
                 </InputGroup.Append>
             </InputGroup>
         </div>

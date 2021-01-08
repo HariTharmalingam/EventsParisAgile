@@ -4,6 +4,7 @@ import {  setDateSearch, searchByName } from "./../../../Actions/SearchEngine";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
 import moment from 'moment'
+import { Calendar3 } from 'react-bootstrap-icons'
 
 class DateBar extends React.Component {
 
@@ -12,6 +13,7 @@ class DateBar extends React.Component {
     this.state = {
       date : this.props.ResultsReducer.dateSearch !== '' ? Date.parse(this.props.ResultsReducer.dateSearch) : Date.now()
     }
+    this.datePickerRef = React.createRef();
   }
 
   async setDate(e){
@@ -26,10 +28,13 @@ class DateBar extends React.Component {
     const { date } = this.state;
     return (
       <div style={{textAlign: "center" }}>
-        <DatePicker className={"p-1 m-3"}
+        <Calendar3 size={32}/>
+        <DatePicker 
+        ref={this.datePickerRef}
+        className={"p-1 m-3"}
         dateFormat="dd/MM/yyyy"
         selected={date} 
-        onChange={(e) => this.setDate(e)} //when day is clicked
+        onChange={(e) => this.setDate(e)}
         />
       </div>
     );

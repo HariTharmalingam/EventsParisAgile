@@ -19,7 +19,7 @@ class List extends Component {
     
     if(ResultsReducer.results) {
         return (      
-            <div className="eventScroll">
+            <div className="eventScroll" style={{zIndex : -1}}>
               {ResultsReducer.results.map((element, i) => (
                 <div key={i}  onMouseEnter={() => this.handleHover(element)}>
                   <Cards addCurrentEvent={(i, b) => addCurrentEvent(i, b)} data={element}/>

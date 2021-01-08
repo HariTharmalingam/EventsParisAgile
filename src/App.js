@@ -11,10 +11,10 @@ function App(props) {
   return (
     <Provider store={store}>
       <Row noGutters className="App" style={{ flex: 1, flexDirection: "row" }}>
-        <Col lg={5}>
+        <Col lg={4}>
           <SideBar />
         </Col>
-        <Col lg={7}>
+        <Col lg={8}>
         <Alerts />
           <Map />
         </Col>
