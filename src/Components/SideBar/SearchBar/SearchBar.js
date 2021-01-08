@@ -13,6 +13,15 @@ class SearchBar extends React.Component {
       }
   }
 
+  componentDidUpdate(nextProps) {
+    const { searchQuery } = this.state;
+    if(nextProps.ResultsReducer.textSearch !== searchQuery) {
+      this.setState({
+        searchQuery: nextProps.ResultsReducer.textSearch
+      })
+    }
+  }
+
   componentDidMount(){
     let datesearch = this.props.ResultsReducer.dateSearch !== '' ? this.props.ResultsReducer.dateSearch : moment().format('YYYY-MM-DD')
 

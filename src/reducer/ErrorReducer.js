@@ -9,9 +9,7 @@ function ErrorReducer(state = initialState, action) {
         case 'ERROR_LOADED' :
             return {
                 ...state,
-                isLoaded: true,
-                error_name: action.error_name,
-                error_description: action.error_description,
+                error_description: action.value,
             }
             default: return state;
     }
