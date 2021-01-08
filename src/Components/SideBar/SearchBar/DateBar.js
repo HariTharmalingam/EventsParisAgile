@@ -14,7 +14,6 @@ class DateBar extends React.Component {
     }
   }
 
-
   async setDate(e){
     this.setState({
       date : Date.parse(e)

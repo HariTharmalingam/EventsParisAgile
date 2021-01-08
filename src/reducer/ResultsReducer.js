@@ -1,10 +1,11 @@
+import moment from 'moment'
 const initialState = {
     isLoaded: false,
     results: null,
     currentEvent: [],
     isEvent: false,
     textSearch: "",
-    dateSearch: ""
+    dateSearch: ''
 }
 
 function ResultsReducer(state = initialState, action) {
